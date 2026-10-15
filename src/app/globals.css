@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #D71920;
+  --color-accent-hover: #b8141a;
+  --color-byd-red: #D71920;
+  --color-byd-red-hover: #b8141a;
+
+  --color-darkest: #0F172A;
+  --color-surface-1: #F8F9FA;
+  --color-surface-2: #FFFFFF;
+  --color-surface-3: #F1F5F9;
+
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-main: 'Helvetica Neue', Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Urbanist', 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Urbanist', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Helvetica Neue', Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Base Body Typography: Clean Helvetica */
+*,
+*::before,
+*::after,
+html,
+body,
+p,
+span,
+div,
+a,
+button,
+input,
+select,
+textarea,
+li,
+label {
+  font-family: 'Helvetica Neue', Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Modern Soft Aerodynamic Automotive Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading,
+.font-display,
+.heading-automotive {
+  font-family: 'Urbanist', 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: #ffffff;
+  color: #0F172A;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: #0F172A;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism helpers for Light Automotive Theme */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+/* Animation keyframes */
+@keyframes pulseHotspot {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.animate-hotspot-pulse {
+  animation: pulseHotspot 2s infinite ease-out;
+}

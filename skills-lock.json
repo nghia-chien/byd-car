@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "vision": {
+      "source": "kotot/vision",
+      "sourceType": "github",
+      "skillPath": "vision/SKILL.md",
+      "computedHash": "3ff0bf6adbaccca4bfc25ce795c252fcd683b795f248d138249e34ede3aa4a7f"
+    }
+  }
+}
