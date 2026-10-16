@@ -18,18 +18,7 @@ export const QuickContact: React.FC<QuickContactProps> = ({ toastMessage }) => {
           aria-label="Gọi Hotline"
         >
           <Phone size={22} />
-        </a>
-
-        <a
-          href={DEALER_INFO.socialLinks.zalo}
-          target="_blank"
-          rel="noreferrer"
-          className="w-13 h-13 rounded-full bg-[#0068FF] hover:bg-[#0055d4] text-white font-extrabold text-xs flex items-center justify-center shadow-2xl hover:scale-110 transition-all cursor-pointer tracking-tighter"
-          title="Chat Zalo Tư Vấn"
-          aria-label="Chat Zalo"
-        >
-          ZL
-        </a>
+        </a>   
       </div>
 
       {/* Toast Notification */}
