@@ -10,8 +10,10 @@ export interface CarModel {
 }
 
 export interface ColorOption {
+  id: string;
   name: string;
   hex: string;
+  image: string;
 }
 
 export const SHOWROOM_MODELS: CarModel[] = [
@@ -68,10 +70,7 @@ export const SHOWROOM_MODELS: CarModel[] = [
 ];
 
 export const COLOR_OPTIONS: ColorOption[] = [
-  { name: "Đỏ Rượu (Crimson Wine)", hex: "#7A1C28" },
-  { name: "Xanh Bắc Cực (Arctic Blue)", hex: "#1C3D82" },
-  { name: "Xám Titan (Titanium Grey)", hex: "#2E343A" },
-  { name: "Xanh Rừng Sâu (Emerald Green)", hex: "#0E3E34" },
-  { name: "Vàng Năng Lượng (Solar Gold)", hex: "#E9B634" },
-  { name: "Trắng Ngọc Trai (Pearl White)", hex: "#EAEAEA" }
+  { id: "blue", name: "Xanh Dương (Arctic Blue)", hex: "#1C3D82", image: "/SEAL.png" },
+  { id: "white", name: "Trắng (Pearl White)", hex: "#FFFFFF", image: "/SEAL_White.png" },
+  { id: "black", name: "Đen (Shadow Black)", hex: "#111827", image: "/SEAL_Black.png" }
 ];

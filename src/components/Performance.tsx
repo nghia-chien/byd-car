@@ -7,7 +7,7 @@ interface PerformanceProps {
 
 export const Performance: React.FC<PerformanceProps> = ({ onOpenTestDrive }) => {
   return (
-    <section id="performance" className="relative min-h-dvh flex flex-col justify-center py-20 lg:py-24 overflow-hidden select-none border-t border-gray-200 scroll-mt-16">
+    <section id="performance" className="relative min-h-dvh flex flex-col justify-center py-20 lg:py-24 overflow-hidden select-none scroll-mt-16">
       {/* Background Image: model.jpg with atmospheric showroom overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img

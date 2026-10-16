@@ -6,7 +6,7 @@ export const BrandDNA: React.FC = () => {
   const softChamferClip = 'polygon(0 14px, 14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px))';
 
   return (
-    <section id="brand-dna" className="relative bg-[#F8F9FA] pt-20 lg:pt-28 pb-28 min-h-dvh flex flex-col justify-center border-t border-gray-200">
+    <section id="brand-dna" className="relative z-0 -mt-[30px] bg-[#F8F9FA] pt-24 lg:pt-32 pb-28 min-h-dvh flex flex-col justify-center">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Section Header */}
         <div className="mb-6">

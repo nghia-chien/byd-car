@@ -91,3 +91,42 @@ body {
 .animate-hotspot-pulse {
   animation: pulseHotspot 2s infinite ease-out;
 }
+
+/* Ultra-smooth Hardware-Accelerated Vertical Top-to-Bottom Car Color Slide */
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -65px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutToBottom {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 65px, 0);
+  }
+}
+
+.animate-slide-in-down {
+  animation: slideInFromTop 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.animate-slide-out-down {
+  animation: slideOutToBottom 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+

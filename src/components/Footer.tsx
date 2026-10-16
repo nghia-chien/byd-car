@@ -17,15 +17,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTestDrive }) => {
         );
       case 'zalo':
         return (
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M12 2C6.477 2 2 6.03 2 11c0 2.868 1.498 5.432 3.84 7.02-.17.947-.732 2.584-.798 2.828-.092.32.12.45.328.33.272-.16 2.373-1.572 3.327-2.224.425.08.855.122 1.303.122 5.523 0 10-4.03 10-9s-4.477-9-10-9z"
-              fill="white"
-            />
-            <path
-              d="M14.5 14.5H9.5a.75.75 0 0 1 0-1.5h3.3l-3.8-4.2a.75.75 0 0 1 .55-1.3h5a.75.75 0 0 1 0 1.5h-3.3l3.8 4.2a.75.75 0 0 1-.55 1.3z"
-              fill="#0068FF"
-            />
+          <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.49 10.272v-.45h1.347v6.322h-.77a.576.576 0 0 1-.577-.573v.001a3.27 3.27 0 0 1-1.938.632a3.284 3.284 0 0 1-3.284-3.282a3.284 3.284 0 0 1 3.284-3.282a3.27 3.27 0 0 1 1.937.632zM6.919 7.79v.205c0 .382-.051.694-.3 1.06l-.03.034a8 8 0 0 0-.242.285L2.024 14.8h4.895v1.465H.192v-.759l4.577-6.223a6.8 6.8 0 0 0 .375-.58c.176-.307.264-.593.264-.858c0-.441-.184-.798-.553-1.071c-.368-.273-.855-.41-1.46-.41c-.553 0-1.036.126-1.448.378c-.413.252-.716.592-.91 1.022L.52 7.042C.83 6.27 1.345 5.666 2.065 5.23c.72-.436 1.545-.654 2.476-.654c1.11 0 2.025.26 2.747.78c.722.52 1.081 1.22 1.081 2.102zM15.47 16.142h1.442V7.788H15.47zm8.223-6.542c0 1.825-1.48 3.305-3.307 3.305c-1.826 0-3.306-1.48-3.306-3.305c0-1.824 1.48-3.305 3.306-3.305c1.827 0 3.307 1.481 3.307 3.305zm-10.141 5.253c1.068 0 1.932-.865 1.932-1.931s-.864-1.93-1.932-1.93s-1.932.864-1.932 1.93s.864 1.931 1.932 1.931zm10.141-.003c1.074 0 1.945-.87 1.945-1.945c0-1.073-.871-1.944-1.945-1.944s-1.945.871-1.945 1.944c0 1.075.87 1.945 1.945 1.945z" />
           </svg>
         );
       case 'maps':
@@ -107,21 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTestDrive }) => {
             </div>
 
             {/* Social Media Badges (Aventor Solid Square Style with Vibrant Custom Colors) */}
-            <div className="flex items-center gap-3 pt-2">
-              {SOCIAL_BADGES.map((badge) => (
-                <a
-                  key={badge.id}
-                  href={badge.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={badge.name}
-                  title={badge.name}
-                  className={`w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg ${badge.bgClass} text-white flex items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-md ${badge.shadowClass}`}
-                >
-                  {renderSocialIcon(badge)}
-                </a>
-              ))}
-            </div>
+            
           </div>
 
           {/* Columns 2, 3, 4: Navigation Columns (Aventor Minimalist Typography) */}
@@ -131,7 +110,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTestDrive }) => {
               className={index === 2 ? 'lg:col-span-3' : 'lg:col-span-2'}
             >
               <h4 className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.2em] text-white mb-5 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D71920]" />
+                
                 {col.title}
               </h4>
               <ul className="flex flex-col space-y-3.5 text-[13px]">

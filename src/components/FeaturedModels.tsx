@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SHOWROOM_MODELS, COLOR_OPTIONS, CarModel } from '../data/showroomData';
 
@@ -10,10 +10,21 @@ interface FeaturedModelsProps {
 export const FeaturedModels: React.FC<FeaturedModelsProps> = ({ onOpenTestDrive, onToast }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedColorIndex, setSelectedColorIndex] = useState<number>(0);
+  const [prevColorIndex, setPrevColorIndex] = useState<number | null>(null);
+  const [isColorTransitioning, setIsColorTransitioning] = useState<boolean>(false);
+  const colorTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const touchStartX = useRef<number | null>(null);
 
   const total = SHOWROOM_MODELS.length;
   const currentModel: CarModel = SHOWROOM_MODELS[currentIndex];
+
+  // Preload all 3 color images upfront into GPU cache to eliminate decode latency on click
+  useEffect(() => {
+    COLOR_OPTIONS.forEach((c) => {
+      const img = new Image();
+      img.src = c.image;
+    });
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + total) % total);
@@ -24,8 +35,27 @@ export const FeaturedModels: React.FC<FeaturedModelsProps> = ({ onOpenTestDrive,
   };
 
   const handleColorSelect = (index: number, colorName: string) => {
+    // If user is currently browsing another model, switch back to BYD SEAL
+    if (currentIndex !== 0) {
+      setCurrentIndex(0);
+    }
+
+    if (index === selectedColorIndex && !isColorTransitioning) return;
+
+    if (colorTimeoutRef.current) {
+      clearTimeout(colorTimeoutRef.current);
+    }
+
+    setPrevColorIndex(selectedColorIndex);
     setSelectedColorIndex(index);
+    setIsColorTransitioning(true);
     onToast(`Đã chọn màu ngoại thất: ${colorName}`);
+
+    // Fallback safety timeout if onAnimationEnd doesn't fire
+    colorTimeoutRef.current = setTimeout(() => {
+      setIsColorTransitioning(false);
+      setPrevColorIndex(null);
+    }, 700);
   };
 
   // Touch Swipe Handlers for mobile & tablet
@@ -47,7 +77,7 @@ export const FeaturedModels: React.FC<FeaturedModelsProps> = ({ onOpenTestDrive,
   return (
     <section
       id="featured-models"
-      className="relative py-20 lg:py-24 bg-[#F8F9FA] border-t border-gray-200 overflow-hidden min-h-dvh flex flex-col justify-center select-none scroll-mt-16"
+      className="relative py-20 lg:py-24 bg-[#F8F9FA] overflow-hidden min-h-dvh flex flex-col justify-center select-none scroll-mt-16"
     >
 
       <div className="max-w-[1260px] mx-auto px-6 w-full relative z-10">
@@ -109,6 +139,10 @@ export const FeaturedModels: React.FC<FeaturedModelsProps> = ({ onOpenTestDrive,
               zIndexVal = 5;
             }
 
+            const isSeal = model.id === 'seal';
+            const currentSealImage = COLOR_OPTIONS[selectedColorIndex]?.image || model.image;
+            const prevSealImage = prevColorIndex !== null ? COLOR_OPTIONS[prevColorIndex]?.image : null;
+
             return (
               <div
                 key={model.id}
@@ -128,12 +162,43 @@ export const FeaturedModels: React.FC<FeaturedModelsProps> = ({ onOpenTestDrive,
                   !isCenter ? 'cursor-pointer hover:opacity-75' : ''
                 }`}
               >
-                <img
-                  src={model.image}
-                  alt={model.name}
-                  className="w-full h-auto object-contain pointer-events-none select-none"
-                  loading="eager"
-                />
+                {/* Vehicle Presentation: Support Smooth Top-to-Bottom Color Slide for BYD SEAL */}
+                <div className="relative w-full flex items-center justify-center">
+                  {isCenter && isSeal && isColorTransitioning && prevSealImage ? (
+                    <div className="relative w-full flex items-center justify-center">
+                      {/* Outgoing Color Car: Glides downwards out */}
+                      <img
+                        key={`prev-${prevSealImage}`}
+                        src={prevSealImage}
+                        alt={`${model.name} màu trước`}
+                        className="w-full h-auto object-contain pointer-events-none select-none absolute inset-0 animate-slide-out-down"
+                        loading="eager"
+                      />
+                      {/* Incoming Color Car: Glides downwards in from top */}
+                      <img
+                        key={`curr-${currentSealImage}`}
+                        src={currentSealImage}
+                        alt={`${model.name} ${COLOR_OPTIONS[selectedColorIndex]?.name}`}
+                        onAnimationEnd={() => {
+                          if (colorTimeoutRef.current) {
+                            clearTimeout(colorTimeoutRef.current);
+                          }
+                          setIsColorTransitioning(false);
+                          setPrevColorIndex(null);
+                        }}
+                        className="w-full h-auto object-contain pointer-events-none select-none relative z-10 animate-slide-in-down"
+                        loading="eager"
+                      />
+                    </div>
+                  ) : (
+                    <img
+                      src={isSeal ? currentSealImage : model.image}
+                      alt={isSeal ? `${model.name} ${COLOR_OPTIONS[selectedColorIndex]?.name}` : model.name}
+                      className="w-full h-auto object-contain pointer-events-none select-none"
+                      loading="eager"
+                    />
+                  )}
+                </div>
 
                 {/* Ground Reflection for Center Car */}
                 {isCenter && (
@@ -237,25 +302,35 @@ export const FeaturedModels: React.FC<FeaturedModelsProps> = ({ onOpenTestDrive,
         {/* Bottom Controls Row: Swatches on Left, Buttons on Right */}
         <div className="flex flex-col sm:flex-row items-center justify-between max-w-[940px] mx-auto gap-6">
           {/* Color Dots with WCAG 44px Tap Target */}
-          <div className="flex items-center gap-1 sm:gap-2">
-            {COLOR_OPTIONS.map((c, i) => (
-              <button
-                key={i}
-                title={c.name}
-                onClick={() => handleColorSelect(i, c.name)}
-                className="w-11 h-11 flex items-center justify-center cursor-pointer group"
-                aria-label={c.name}
-              >
-                <span
-                  style={{ backgroundColor: c.hex }}
-                  className={`w-7 h-7 rounded-full transition-all duration-300 border border-gray-300 ${
-                    selectedColorIndex === i
-                      ? 'scale-125 ring-2 ring-[#D71920] ring-offset-2 ring-offset-white shadow-md'
-                      : 'group-hover:scale-110 opacity-80 group-hover:opacity-100'
-                  }`}
-                />
-              </button>
-            ))}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="text-xs text-gray-500 font-medium mr-1 hidden sm:inline">
+              Màu ngoại thất:
+            </span>
+            <div className="flex items-center gap-1 sm:gap-2">
+              {COLOR_OPTIONS.map((c, i) => (
+                <button
+                  key={c.id}
+                  title={c.name}
+                  onClick={() => handleColorSelect(i, c.name)}
+                  className="w-11 h-11 flex items-center justify-center cursor-pointer group"
+                  aria-label={c.name}
+                >
+                  <span
+                    style={{ backgroundColor: c.hex }}
+                    className={`w-7 h-7 rounded-full transition-all duration-300 border ${
+                      c.id === 'white' ? 'border-gray-400 shadow-xs' : 'border-gray-300'
+                    } ${
+                      selectedColorIndex === i
+                        ? 'scale-125 ring-2 ring-[#D71920] ring-offset-2 ring-offset-[#F8F9FA] shadow-md'
+                        : 'group-hover:scale-110 opacity-80 group-hover:opacity-100'
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
+            <span className="text-xs font-semibold text-[#0F172A] tracking-tight ml-1">
+              {COLOR_OPTIONS[selectedColorIndex].name}
+            </span>
           </div>
 
           {/* Dual Action Buttons with 44px Tap Targets */}

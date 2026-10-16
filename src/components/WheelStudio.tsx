@@ -13,7 +13,7 @@ export const WheelStudio: React.FC<WheelStudioProps> = () => {
   return (
     <section 
       id="wheel-studio" 
-      className="relative min-h-dvh flex flex-col justify-center py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-[#F8FAFC] via-[#EEF2F6] to-[#E2E8F0] overflow-hidden select-none scroll-mt-16 border-t border-slate-300/80 border-b border-slate-300/80"
+      className="relative min-h-dvh flex flex-col justify-center py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-[#F8FAFC] via-[#EEF2F6] to-[#E2E8F0] overflow-hidden select-none scroll-mt-16"
     >
       {/* 1. Automotive Studio Backdrop (Ambient Spotlight & Grid Pattern) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">

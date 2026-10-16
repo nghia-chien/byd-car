@@ -10,7 +10,7 @@ export const PreFooterCTA: React.FC<PreFooterCTAProps> = ({ onOpenTestDrive }) =
   const canopyChamferClip = 'polygon(0 42px, 14% 42px, 20% 0, 80% 0, 86% 42px, 100% 42px, 100% 100%, 0 100%)';
 
   return (
-    <section id="pre-footer-cta" className="relative min-h-dvh flex flex-col justify-center bg-[#E2E8F0] py-6 sm:py-8 lg:py-10 overflow-hidden select-none border-t border-slate-300/80 scroll-mt-16">
+    <section id="pre-footer-cta" className="relative min-h-dvh flex flex-col justify-center bg-gradient-to-b from-[#E2E8F0] via-[#0A101D] to-[#050505] py-6 sm:py-8 lg:py-10 overflow-hidden select-none scroll-mt-16">
       {/* Outer Chamfered Canopy Wrapper with Luminous Top Contour Border */}
       <div 
         className="relative w-full pt-[1.5px] bg-gradient-to-r from-transparent via-blue-500/40 via-50% via-[#D71920] to-transparent"

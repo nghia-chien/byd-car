@@ -9,7 +9,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTestDrive }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-dvh flex flex-col justify-end overflow-hidden bg-[#070809]"
+      className="relative z-10 min-h-dvh flex flex-col justify-end overflow-hidden bg-[#F8F9FA]"
       style={{
         clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 30px), 88% 100%, 12% 100%, 0 calc(100% - 30px))'
       }}
@@ -56,25 +56,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTestDrive }) => {
           </div>
         </div>
       </div>
-
-      {/* Chamfered Bottom Edge Accent Line */}
-      <svg
-        className="absolute bottom-0 left-0 w-full h-[32px] pointer-events-none z-20"
-        preserveAspectRatio="none"
-        viewBox="0 0 1000 32"
-        fill="none"
-      >
-        <polyline
-          points="0,2 120,30 880,30 1000,2"
-          stroke="rgba(255, 255, 255, 0.3)"
-          strokeWidth="1.5"
-        />
-        <polyline
-          points="120,31 880,31"
-          stroke="rgba(215, 25, 32, 0.8)"
-          strokeWidth="1.5"
-        />
-      </svg>
     </section>
   );
 };

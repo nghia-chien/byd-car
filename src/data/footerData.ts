@@ -72,16 +72,16 @@ export const SOCIAL_BADGES: SocialBadgeItem[] = [
     id: 'maps',
     name: 'Bản đồ chỉ đường Showroom Pleiku',
     href: 'https://maps.google.com',
-    bgClass: 'bg-[#EA4335] hover:bg-[#d9382b]',
-    shadowClass: 'shadow-[#EA4335]/25',
+    bgClass: 'bg-[#10B981] hover:bg-[#059669]',
+    shadowClass: 'shadow-[#10B981]/25',
     type: 'maps'
   },
   {
     id: 'hotline',
     name: 'Hotline Gọi Tư Vấn 24/7',
     href: 'tel:0931612679',
-    bgClass: 'bg-[#D71920] hover:bg-[#b0141a]',
-    shadowClass: 'shadow-[#D71920]/30',
+    bgClass: 'bg-[#16A34A] hover:bg-[#15803d]',
+    shadowClass: 'shadow-[#16A34A]/25',
     type: 'hotline'
   },
   {

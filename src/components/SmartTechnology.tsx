@@ -29,7 +29,7 @@ export const SmartTechnology: React.FC<SmartTechnologyProps> = ({
   return (
     <section 
       id="smart-tech"
-      className="relative min-h-dvh flex flex-col justify-center py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white via-[#F8F9FA] to-[#EEF2F6] border-t border-gray-200 border-b border-gray-200 select-none scroll-mt-16"
+      className="relative min-h-dvh flex flex-col justify-center py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white via-[#F8F9FA] to-[#EEF2F6] select-none scroll-mt-16"
     >
       <div className="max-w-[1260px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading: Centered, Clean, No Eyebrow */}

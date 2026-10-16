@@ -22,12 +22,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#brand-dna" className="text-[13px] font-medium text-gray-600 hover:text-[#D71920] transition-colors">Triết Lý</a>
-          <a href="#featured-models" className="text-[13px] font-medium text-gray-600 hover:text-[#D71920] transition-colors">Dòng Xe</a>
-          <a href="#performance" className="text-[13px] font-medium text-gray-600 hover:text-[#D71920] transition-colors">Hiệu Năng</a>
-          <a href="#wheel-studio" className="text-[13px] font-medium text-gray-600 hover:text-[#D71920] transition-colors">e-Platform 3.0</a>
-          <a href="#smart-tech" className="text-[13px] font-medium text-gray-600 hover:text-[#D71920] transition-colors">Công Nghệ Showroom</a>
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          <a href="#brand-dna" className="text-[12px] font-semibold uppercase tracking-wider text-gray-700 hover:text-[#D71920] transition-colors">TRIẾT LÝ</a>
+          <a href="#featured-models" className="text-[12px] font-semibold uppercase tracking-wider text-gray-700 hover:text-[#D71920] transition-colors">DÒNG XE</a>
+          <a href="#performance" className="text-[12px] font-semibold uppercase tracking-wider text-gray-700 hover:text-[#D71920] transition-colors">HIỆU NĂNG</a>
+          <a href="#wheel-studio" className="text-[12px] font-semibold uppercase tracking-wider text-gray-700 hover:text-[#D71920] transition-colors">E-PLATFORM 3.0</a>
+          <a href="#smart-tech" className="text-[12px] font-semibold uppercase tracking-wider text-gray-700 hover:text-[#D71920] transition-colors">CÔNG NGHỆ SHOWROOM</a>
         </nav>
 
         {/* Action Group */}
@@ -60,14 +60,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTestDrive }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200 px-6 py-6 flex flex-col gap-2 text-sm font-medium shadow-xl">
-          <a href="#brand-dna" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">Triết Lý Thiết Kế</a>
-          <a href="#featured-models" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">Dòng Xe Trưng Bày</a>
-          <a href="#performance" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">Thông Số Hiệu Năng</a>
-          <a href="#wheel-studio" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">Nền Tảng e-Platform 3.0</a>
-          <a href="#smart-tech" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">Công Nghệ Showroom</a>
+        <div className="md:hidden bg-white border-b border-gray-200 px-6 py-6 flex flex-col gap-2 text-xs font-semibold uppercase tracking-wider shadow-xl">
+          <a href="#brand-dna" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">TRIẾT LÝ THIẾT KẾ</a>
+          <a href="#featured-models" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">DÒNG XE TRƯNG BÀY</a>
+          <a href="#performance" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">THÔNG SỐ HIỆU NĂNG</a>
+          <a href="#wheel-studio" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">NỀN TẢNG E-PLATFORM 3.0</a>
+          <a href="#smart-tech" onClick={() => setMobileMenuOpen(false)} className="py-2.5 text-gray-700 hover:text-[#D71920] transition-colors">CÔNG NGHỆ SHOWROOM</a>
           <a href={`tel:${DEALER_INFO.hotlineFormatted}`} className="text-[#D71920] font-bold min-h-[44px] inline-flex items-center gap-2 pt-2 border-t border-gray-200">
-            <Phone size={16} /> Hotline: {DEALER_INFO.hotlineFormatted}
+            <Phone size={16} /> HOTLINE: {DEALER_INFO.hotlineFormatted}
           </a>
         </div>
       )}
